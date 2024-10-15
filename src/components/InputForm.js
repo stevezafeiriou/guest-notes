@@ -7,15 +7,18 @@ import {
 	CheckboxContainer,
 	Select,
 } from "./Elements";
+import Loader from "./Loader";
 
 function InputForm({ addNote, tags, selectedTag, setSelectedTag }) {
-	// Pass setSelectedTag
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
 	const [message, setMessage] = useState("");
-	const [tag, setTag] = useState(selectedTag || ""); // Set selected tag as default
+	const [tag, setTag] = useState(selectedTag || 6);
 	const [acceptedTerms, setAcceptedTerms] = useState(true); // Default to true for better UX
 	const [error, setError] = useState("");
+
+	// Regular expression to detect URLs
+	const urlPattern = /(\b(https?:\/\/|www\.)[^\s]+)/g;
 
 	// Update the tag state whenever the selectedTag prop changes
 	useEffect(() => {
@@ -30,6 +33,12 @@ function InputForm({ addNote, tags, selectedTag, setSelectedTag }) {
 			setError(
 				"Please provide a valid email, message, select a tag, and accept the terms."
 			);
+			return;
+		}
+
+		// Check for links in the message
+		if (urlPattern.test(message)) {
+			setError("You can not include links in your notes.");
 			return;
 		}
 
@@ -61,6 +70,7 @@ function InputForm({ addNote, tags, selectedTag, setSelectedTag }) {
 		<FormContainer>
 			<h2>Add a Guest Note!</h2>
 			<form onSubmit={handleSubmit}>
+				{error && <Loader isError={true} message={error} />}
 				<Input
 					type="text"
 					placeholder="Your Name (Optional)"
@@ -99,7 +109,7 @@ function InputForm({ addNote, tags, selectedTag, setSelectedTag }) {
 						Steve Zafeiriou
 					</label>
 				</CheckboxContainer>
-				{error && <p style={{ color: "red" }}>{error}</p>}
+
 				<SubmitButton type="submit" disabled={!acceptedTerms}>
 					Submit
 				</SubmitButton>

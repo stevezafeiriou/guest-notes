@@ -1,25 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
 	FormContainer,
 	Input,
 	Textarea,
 	SubmitButton,
 	CheckboxContainer,
+	Select,
 } from "./Elements";
 
-function InputForm({ addNote }) {
+function InputForm({ addNote, tags, selectedTag, setSelectedTag }) {
+	// Pass setSelectedTag
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
 	const [message, setMessage] = useState("");
-	const [acceptedTerms, setAcceptedTerms] = useState(true);
+	const [tag, setTag] = useState(selectedTag || ""); // Set selected tag as default
+	const [acceptedTerms, setAcceptedTerms] = useState(true); // Default to true for better UX
 	const [error, setError] = useState("");
+
+	// Update the tag state whenever the selectedTag prop changes
+	useEffect(() => {
+		setTag(selectedTag);
+	}, [selectedTag]);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
 		// Simple form validation
-		if (!email || !message || !acceptedTerms) {
-			setError("Please provide a valid email, message, and accept the terms.");
+		if (!email || !message || !acceptedTerms || !tag) {
+			setError(
+				"Please provide a valid email, message, select a tag, and accept the terms."
+			);
 			return;
 		}
 
@@ -28,6 +38,7 @@ function InputForm({ addNote }) {
 			name: name.trim() || "Anonymous", // If no name, default to 'Anonymous'
 			email,
 			message,
+			tag_id: tag, // Attach the selected tag to the note
 		};
 
 		addNote(note);
@@ -37,6 +48,13 @@ function InputForm({ addNote }) {
 		setEmail("");
 		setMessage("");
 		setError("");
+	};
+
+	// Update the selectedTag in App.js when the user changes the tag in the dropdown
+	const handleTagChange = (e) => {
+		const newTag = e.target.value;
+		setTag(newTag); // Update local state for the form
+		setSelectedTag(newTag); // Update selectedTag in App.js
 	};
 
 	return (
@@ -62,6 +80,13 @@ function InputForm({ addNote }) {
 					onChange={(e) => setMessage(e.target.value)}
 					required
 				/>
+				<Select value={tag} onChange={handleTagChange} required>
+					{tags.map((tag) => (
+						<option key={tag.id} value={tag.id}>
+							{tag.tag_name}
+						</option>
+					))}
+				</Select>
 				<CheckboxContainer>
 					<label>
 						<input

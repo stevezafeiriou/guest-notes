@@ -4,26 +4,33 @@ import styled from "styled-components";
 
 export const FormContainer = styled.div`
 	flex: 0.4;
-	padding: 20px;
+	padding: 10px 0;
 	background-color: #1b1d1c;
+	border-left: 1px solid #f8f8f8;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
 	transition: all 0.2s ease-in-out;
+
 	h2 {
-		margin: 20px 0;
 		font-weight: 300;
 	}
 
 	@media screen and (max-width: 768px) {
-		border-top: 2px solid #ff56b1;
+		padding: 10px;
+		border-left: none;
+		border-top: 1px solid #ff56b1;
+		h2 {
+			margin-top: 10px;
+			margin-bottom: 20px;
+		}
 	}
 `;
 
 export const Input = styled.input`
 	width: 100%;
-	padding: 10px;
+	padding: 15px 10px;
 	margin-bottom: 10px;
 	border: 1px solid #ddd;
 	background-color: transparent;
@@ -32,7 +39,7 @@ export const Input = styled.input`
 
 export const Textarea = styled.textarea`
 	width: 100%;
-	padding: 10px;
+	padding: 15px 10px;
 	margin-bottom: 10px;
 	border: 1px solid #ddd;
 	color: #fff;
@@ -41,10 +48,10 @@ export const Textarea = styled.textarea`
 
 export const SubmitButton = styled.button`
 	width: 100%;
-	padding: 10px;
+	padding: 15px 10px;
 	background-color: #ff56b1;
 	color: white;
-	border: 1px solid #ff56b1;
+	border: none;
 	transition: all 0.2s ease-in-out;
 	cursor: pointer;
 
@@ -56,7 +63,6 @@ export const SubmitButton = styled.button`
 	&:hover {
 		background-color: #ff70b0;
 		color: #f8f8f8;
-		border: 1px solid #ff70b0;
 	}
 `;
 
@@ -68,13 +74,66 @@ export const CheckboxContainer = styled.div`
 	}
 `;
 
+export const Select = styled.select`
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 10px;
+	border: 1px solid #ddd;
+	background-color: transparent;
+	color: #ccc;
+
+	&:focus {
+		outline: none;
+		border-color: #007bff;
+	}
+`;
+
 /// Notes Tab
 
 export const NotesContainer = styled.div`
+	display: flex;
+	flex-direction: column;
 	flex: 0.6;
-	padding: 10px;
-	overflow-y: scroll;
+	height: 100%;
+	width: 100%;
+	padding: 10px 0;
 	background-color: transparent;
+
+	@media screen and (max-width: 768px) {
+		padding: 10px;
+	}
+`;
+
+export const TagSection = styled.div`
+	flex: 0 1 auto;
+	margin-bottom: 10px;
+`;
+
+export const NotesSection = styled.div`
+	flex: 1 1 auto;
+	overflow-y: scroll;
+	padding: 10px;
+`;
+
+export const ButtonContainer = styled.div`
+	display: flex;
+	justify-content: center;
+	margin-bottom: 20px;
+`;
+
+export const TagButton = styled.button`
+	padding: 8px 15px;
+
+	cursor: pointer;
+	background-color: ${({ isActive }) => (isActive ? "#ff56b1" : "#1b1d1c")};
+	color: ${({ isActive }) => (isActive ? "#fff" : "#ccc")};
+	border: none;
+	transition: background-color 0.2s ease-in-out;
+	font-size: 0.85rem;
+
+	&:hover {
+		background-color: #292b2a;
+	}
 `;
 
 export const Note = styled.div`

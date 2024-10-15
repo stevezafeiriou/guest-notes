@@ -9,9 +9,9 @@ export const GlobalStyle = createGlobalStyle`
 
     html, body {
         font-family: "Inter", sans-serif;
-	font-size: 0.85rem;
-	background-color: #1b1d1c;
-	color: #f8f8f8;
+        font-size: 0.85rem;
+        background-color: #1b1d1c;
+        color: #f8f8f8;
     }
 
     /* Custom styles for react-toastify toasts */

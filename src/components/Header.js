@@ -42,7 +42,7 @@ const PopupOverlay = styled.div`
 	left: 0;
 	width: 100%;
 	height: 100%;
-	backdrop-filter: blur(5px); /* Blur effect */
+	backdrop-filter: blur(2px); /* Blur effect */
 	display: flex;
 	justify-content: center;
 	align-items: center;

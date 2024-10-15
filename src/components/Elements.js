@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 export const FormContainer = styled.div`
 	flex: 0.4;
-	padding: 10px 0;
+	padding: 10px;
 	background-color: #1b1d1c;
 	border-left: 1px solid #f8f8f8;
 	display: flex;
@@ -18,7 +18,6 @@ export const FormContainer = styled.div`
 	}
 
 	@media screen and (max-width: 768px) {
-		padding: 10px;
 		border-left: none;
 		border-top: 1px solid #ff56b1;
 		h2 {
@@ -96,12 +95,8 @@ export const NotesContainer = styled.div`
 	flex: 0.6;
 	height: 100%;
 	width: 100%;
-	padding: 10px 0;
+	padding: 10px;
 	background-color: transparent;
-
-	@media screen and (max-width: 768px) {
-		padding: 10px;
-	}
 `;
 
 export const TagSection = styled.div`

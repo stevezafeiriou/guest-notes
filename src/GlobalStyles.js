@@ -18,6 +18,7 @@ export const GlobalStyle = createGlobalStyle`
     .custom-toast-container {
         font-family: "Inter", sans-serif;
         font-size: 0.758rem;
+        
         color: #000;
     }
 
@@ -26,6 +27,7 @@ export const GlobalStyle = createGlobalStyle`
         border: 1px solid #1b1d1c;
         color: #fff;
         padding: 10px;
+        margin-top: 100px;
         border-radius: 0;
     }
 

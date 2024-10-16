@@ -7,8 +7,8 @@ import {
 	FollowText,
 	TagSection,
 	NotesSection,
-} from "./Elements";
-import Loader from "./Loader";
+} from "./GuestNotesElements";
+import Loader from "../Loader";
 
 function GuestNotes({ notes, loading, error, tags, onTagSelect, selectedTag }) {
 	const [hoveredNoteIndex, setHoveredNoteIndex] = useState(null);

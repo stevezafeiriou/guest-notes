@@ -6,8 +6,8 @@ import {
 	SubmitButton,
 	CheckboxContainer,
 	Select,
-} from "./Elements";
-import Loader from "./Loader";
+} from "./InputFormElements";
+import Loader from "../Loader";
 
 function InputForm({ addNote, tags, selectedTag, setSelectedTag }) {
 	const [name, setName] = useState("");

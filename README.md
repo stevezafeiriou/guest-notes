@@ -1,5 +1,7 @@
 # Guest Notes App for Art Exhibitions
 
+![Guest Notes](./images/guest-book.jpg)
+
 ## Overview
 
 The **Guest Notes App** is a React.js web application built for art exhibitions and events. Visitors can leave feedback, comments, or thoughts about artwork or the event itself. The app features real-time note submission, an admin dashboard, artwork information display, and interactive elements like confetti and toast notifications. The app also allows URL-based navigation, enabling direct access to specific exhibitions (tags) via query parameters.
@@ -91,6 +93,8 @@ CREATE TABLE guest_notes_cur_artwork (
   - **`post_id`**: The WordPress post ID of the selected artwork to be displayed for the exhibition.
   - **`created_at`**: Timestamp of when the artwork selection was made.
 
+![Artwork Info](./images/artwork_info.jpg)
+
 ## Installation
 
 Follow these steps to set up and run the Guest Notes App locally:
@@ -127,6 +131,8 @@ npm start
 ```
 
 The app will be running at `http://localhost:3000`.
+
+![Dashboard](./images/dashboard.jpg)
 
 ## Usage
 

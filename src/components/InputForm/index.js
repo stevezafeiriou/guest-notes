@@ -8,6 +8,7 @@ import {
 	Select,
 } from "./InputFormElements";
 import Loader from "../Loader";
+import LivePreview from "./LivePreview"; // Import the new LivePreview component
 
 function InputForm({ addNote, tags, selectedTag, setSelectedTag }) {
 	const [name, setName] = useState("");
@@ -70,6 +71,8 @@ function InputForm({ addNote, tags, selectedTag, setSelectedTag }) {
 		<FormContainer>
 			<h2>Add a Guest Note!</h2>
 			<form onSubmit={handleSubmit}>
+				{/* Render the LivePreview below the form */}
+				<LivePreview name={name} message={message} />
 				{error && <Loader isError={true} message={error} />}
 				<Input
 					type="text"

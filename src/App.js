@@ -7,6 +7,7 @@ import Confetti from "react-confetti";
 import Home from "./pages/HomePage";
 import Header from "./components/Header";
 import DashboardPage from "./pages/DashboardPage";
+import MapPage from "./pages/MapPage";
 import styled from "styled-components";
 
 const AppContainer = styled.div`
@@ -179,6 +180,18 @@ function App() {
 									setNotes={setNotes}
 									loading={loading}
 									error={error}
+									selectedTag={selectedTag}
+									onTagSelect={setSelectedTag}
+								/>
+							}
+						/>
+
+						<Route
+							path="/map"
+							element={
+								<MapPage
+									tags={tags}
+									notes={notes}
 									selectedTag={selectedTag}
 									onTagSelect={setSelectedTag}
 								/>

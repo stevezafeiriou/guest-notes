@@ -7,7 +7,7 @@ export const LoginContainer = styled.div`
 	align-items: center;
 	width: 100%;
 	height: 100vh;
-	background-color: #000;
+	background-color: #1b1d1c;
 `;
 
 export const LoginCard = styled.div`

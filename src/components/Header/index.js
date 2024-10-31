@@ -18,10 +18,11 @@ import {
 	TabContainer,
 	Tab,
 	TabContent,
+	KioskIcon,
 } from "./HeaderElements";
 import qr from "../../assets/sz-links.png"; // Adjust the path to the image
 
-const Header = () => {
+const Header = ({ toggleKioskModeScreen }) => {
 	const [isPopupOpen, setIsPopupOpen] = useState(false);
 	const [selectedTab, setSelectedTab] = useState("artist-info"); // "artist-info" or "artwork-info"
 	const [artwork, setArtwork] = useState(null); // State for the selected artwork
@@ -64,6 +65,8 @@ const Header = () => {
 	return (
 		<>
 			<HeaderContainer>
+				{!isAuthenticated && <KioskIcon onClick={toggleKioskModeScreen} />}
+
 				<Title>
 					{isAuthenticated ? (
 						<>

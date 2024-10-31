@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { FiInfo } from "react-icons/fi";
 import { AiOutlineClose } from "react-icons/ai";
 import { IoIosMenu } from "react-icons/io";
+import { RiFullscreenFill } from "react-icons/ri";
 
 export const HeaderContainer = styled.header`
 	height: 60px;
@@ -39,6 +40,15 @@ export const InfoIcon = styled(FiInfo)`
 		color: #f8f8f8;
 		background-color: #ff56b1;
 	}
+`;
+
+export const KioskIcon = styled(RiFullscreenFill)`
+	font-size: 2.5rem;
+	margin-right: 20px;
+	border-radius: 50%;
+	padding: 5px;
+	color: #1b1d1c;
+	cursor: pointer;
 `;
 
 export const AdminMenu = styled(IoIosMenu)`

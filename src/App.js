@@ -117,6 +117,17 @@ function App() {
 		}
 	};
 
+	const toggleKioskModeScreen = () => {
+		const element = document.getElementById("app");
+		const isFullScreen = document.fullscreenElement;
+
+		if (isFullScreen) {
+			document.exitFullscreen();
+		} else {
+			element.requestFullscreen();
+		}
+	};
+
 	// Hide confetti after 5 seconds
 	useEffect(() => {
 		if (showConfetti) {
@@ -153,52 +164,54 @@ function App() {
 					autoClose={3500}
 					position="top-right"
 				/>
-				<Header />
-				{showConfetti && <Confetti />}
-				<AppContainer>
-					<Routes>
-						<Route
-							path="/"
-							element={
-								<Home
-									notes={notes}
-									loading={loading}
-									error={error}
-									tags={tags}
-									selectedTag={selectedTag}
-									onTagSelect={setSelectedTag}
-									addNote={addNote}
-								/>
-							}
-						/>
-						<Route
-							path="/dashboard"
-							element={
-								<DashboardPage
-									tags={tags}
-									notes={notes}
-									setNotes={setNotes}
-									loading={loading}
-									error={error}
-									selectedTag={selectedTag}
-									onTagSelect={setSelectedTag}
-								/>
-							}
-						/>
+				<div id="app">
+					<Header toggleKioskModeScreen={toggleKioskModeScreen} />
+					{showConfetti && <Confetti />}
+					<AppContainer>
+						<Routes>
+							<Route
+								path="/"
+								element={
+									<Home
+										notes={notes}
+										loading={loading}
+										error={error}
+										tags={tags}
+										selectedTag={selectedTag}
+										onTagSelect={setSelectedTag}
+										addNote={addNote}
+									/>
+								}
+							/>
+							<Route
+								path="/dashboard"
+								element={
+									<DashboardPage
+										tags={tags}
+										notes={notes}
+										setNotes={setNotes}
+										loading={loading}
+										error={error}
+										selectedTag={selectedTag}
+										onTagSelect={setSelectedTag}
+									/>
+								}
+							/>
 
-						<Route
-							path="/map"
-							element={
-								<MapPage
-									tags={tags}
-									notes={notes}
-									selectedTag={selectedTag}
-									onTagSelect={setSelectedTag}
-								/>
-							}
-						/>
-					</Routes>
-				</AppContainer>
+							<Route
+								path="/map"
+								element={
+									<MapPage
+										tags={tags}
+										notes={notes}
+										selectedTag={selectedTag}
+										onTagSelect={setSelectedTag}
+									/>
+								}
+							/>
+						</Routes>
+					</AppContainer>
+				</div>
 			</Router>
 		</>
 	);

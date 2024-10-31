@@ -8,7 +8,7 @@ export const NotesContainer = styled.div`
 	height: 100%;
 	width: 100%;
 	padding: 10px;
-	background-color: transparent;
+	background-color: #1b1d1c;
 `;
 
 export const TagSection = styled.div`
